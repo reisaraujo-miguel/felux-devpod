@@ -22,7 +22,7 @@ for file in *; do
     		fi
   	done
 
-  	if [[ "$ignore" == false && "$file" != "$destination_dir" ]]; then
+  	if [[ "$ignore" == false && "$file" != /etc/skel ]]; then
     		cp -r "$file" /etc/skel
   	fi
 done
@@ -50,7 +50,7 @@ for file in *; do
                 fi
         done
 
-        if [[ \"\$ignore\" == false && \"\$file\" != \"\$destination_dir\" ]]; then
+        if [[ \"\$ignore\" == false && \"\$file\" != /root ]]; then
                 cp -r \"\$file\" /root
         fi
 done
