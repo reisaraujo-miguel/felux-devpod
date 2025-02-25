@@ -8,7 +8,6 @@ RELEASE="$(rpm -E %fedora)"
 
 export BUILD_FILES_DIR="/tmp"
 export SCRIPTS_DIR="${BUILD_FILES_DIR}/scripts"
-export SYSTEM_FILES_DIR="${BUILD_FILES_DIR}/system_files"
 
 # Validate environment
 [[ -z "$RELEASE" ]] && {
@@ -76,8 +75,7 @@ main() {
     #remove_packages "${BUILD_FILES_DIR}/remove-pkgs"
 
     # Install System Files
-    execute_script "copy-system-files.sh"
-    execute_script "configure-zsh.sh"
+    execute_script "configure-dotfiles.sh"
 }
 
 main
