@@ -2,6 +2,8 @@
 
 set -ouex pipefail
 
+dnf5 -y install 'dnf5-command(copr)'
+
 file=$(cat "${BUILD_FILES_DIR}/copr-repos")
 
 for repo in $file; do
