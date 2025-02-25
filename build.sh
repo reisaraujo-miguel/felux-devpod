@@ -73,7 +73,7 @@ main() {
     install_packages "${BUILD_FILES_DIR}/install-pkgs"
 
     # Remove Unwanted Packages
-    remove_packages "${BUILD_FILES_DIR}/remove-pkgs"
+    #remove_packages "${BUILD_FILES_DIR}/remove-pkgs"
 
     # Install System Files
     execute_script "copy-system-files.sh"
