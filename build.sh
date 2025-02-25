@@ -75,10 +75,6 @@ main() {
     # Remove Unwanted Packages
     remove_packages "${BUILD_FILES_DIR}/remove-pkgs"
 
-    # Configure Desktop Environment
-    execute_script "branding.sh"
-    execute_script "set-wallpaper.sh"
-
     # Install System Files
     execute_script "copy-system-files.sh"
     execute_script "configure-zsh.sh"
