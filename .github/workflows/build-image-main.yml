@@ -4,6 +4,9 @@ name: Build Main Image
 on:
   schedule:
     - cron: "05 10 * * *" # 10:05am UTC everyday
+  push:
+    tags:
+      - "v*"
   workflow_call:
     secrets:
       SIGNING_SECRET:
