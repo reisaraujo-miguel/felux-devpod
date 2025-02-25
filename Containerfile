@@ -1,8 +1,7 @@
-ARG SOURCE_IMAGE="bluefin"
-ARG SOURCE_SUFFIX="-dx"
-ARG SOURCE_TAG="latest"
+ARG SOURCE_IMAGE="ucore"
+ARG SOURCE_TAG="stable"
 
-FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
+FROM ghcr.io/ublue-os/${SOURCE_IMAGE}:${SOURCE_TAG}
 
 # copy build files
 COPY ./ /tmp/
