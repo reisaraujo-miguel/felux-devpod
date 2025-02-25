@@ -12,5 +12,4 @@ input-leap
 input-remapper
 devpod
 docker*
-podman*
 virt-manager
