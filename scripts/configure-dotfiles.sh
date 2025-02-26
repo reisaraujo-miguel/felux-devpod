@@ -51,11 +51,10 @@ if [ -d \"/etc/skel\" ] && [ \"\$(ls -A /etc/skel)\" ]; then
     cp -r /etc/skel/.[!.]* /root 2>/dev/null || true
 fi
 
-source /root/.zshenv
-source /root/.config/zsh/.zshrc
-
 # preventing script from running again
 touch /root/.setuplock
+
+exec zsh -l
 " > /etc/profile.d/setup-root.sh	
 
 cd / || exit
