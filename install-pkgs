@@ -10,6 +10,7 @@ lazygit
 zsh-autosuggestions
 zsh-syntax-highlighting
 eza
+bat
 golang
 nodejs
 clangd

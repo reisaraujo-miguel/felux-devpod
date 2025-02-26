@@ -14,23 +14,23 @@ ignore_files=("LICENSE" "README.md" ".git" "install.sh")
 mkdir -p /etc/skel
 
 for file in * .[!.]*; do
-	# Skip if the file doesn't exist (can happen with the wildcards)
-    	[ -e "$file" ] || continue
+    # Skip if the file doesn't exist (can happen with the wildcards)
+    [ -e "$file" ] || continue
 
-	# Skip . and .. directory entries
-    	[[ "$file" == "." || "$file" == ".." ]] && continue
-	
-	ignore=false
- 	for ignored_file in "${ignore_files[@]}"; do
-    		if [[ "$file" == "$ignored_file" ]]; then
-      			ignore=true
-      			break
-    		fi
-  	done
+    # Skip . and .. directory entries
+    [[ "$file" == "." || "$file" == ".." ]] && continue
 
-  	if [[ "$ignore" == false ]]; then
-    		cp -r "$file" /etc/skel
-  	fi
+    ignore=false
+    for ignored_file in "${ignore_files[@]}"; do
+        if [[ "$file" == "$ignored_file" ]]; then
+            ignore=true
+            break
+        fi
+    done
+
+    if [[ "$ignore" == false ]]; then
+        cp -r "$file" /etc/skel
+    fi
 done
 
 # Configure root user on first login
@@ -58,6 +58,6 @@ fi
 touch /root/.setuplock
 
 exec zsh -l
-" > /etc/profile.d/setup-root.sh	
+" >/etc/profile.d/setup-root.sh
 
 cd / || exit
