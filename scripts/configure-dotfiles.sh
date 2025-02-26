@@ -38,21 +38,9 @@ echo "
 # checking if this script has already been executed once
 [ -f /root/.setuplock ] && exit
 
-ignore_files=(\"LICENSE\" \"README.md\" \".git\" \"install.sh\")
-
 # cloning all non ignored files
-for file in *; do
-	ignore=false
-        for ignored_file in \"\${ignore_files[@]}\"; do
-                if [[ \"\$file\" == \"./\$ignored_file\" ]]; then
-                        ignore=true
-                        break
-                fi
-        done
-
-        if [[ \"\$ignore\" == false && \"\$file\" != /root ]]; then
-                cp -r \"\$file\" /root
-        fi
+for file in /etc/skel; do
+	cp -r \"\$file\" /root
 done
 
 # preventing script from running again
