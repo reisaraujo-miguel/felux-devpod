@@ -16,13 +16,13 @@ mkdir -p /etc/skel
 for file in *; do
 	ignore=false
  	for ignored_file in "${ignore_files[@]}"; do
-    		if [[ "$file" == "./$ignored_file" ]]; then
+    		if [[ "$file" == "$ignored_file" ]]; then
       			ignore=true
       			break
     		fi
   	done
 
-  	if [[ "$ignore" == false && "$file" != /etc/skel ]]; then
+  	if [[ "$ignore" == false ]]; then
     		cp -r "$file" /etc/skel
   	fi
 done
@@ -38,10 +38,12 @@ echo "
 # checking if this script has already been executed once
 [ -f /root/.setuplock ] && exit
 
-# cloning all non ignored files
-for file in /etc/skel; do
-	cp -r \"\$file\" /root
-done
+# cloning all files
+if [ -d \"/etc/skel\" ] && [ \"\$(ls -A /etc/skel)\" ]; then
+    cp -r /etc/skel/* /root 2>/dev/null
+    # Also copy hidden files
+    cp -r /etc/skel/.[!.]* /root 2>/dev/null || true
+fi
 
 # preventing script from running again
 touch /root/.setuplock
