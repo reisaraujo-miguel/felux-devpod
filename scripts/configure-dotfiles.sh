@@ -41,6 +41,9 @@ echo "
 # creating root dir if it does not exists
 [ ! -d /var/roothome ] && mkdir -p /var/roothome
 
+# creating usrlocal if it does not exists
+[ ! -d /var/usrlocal ] && mkdir -p /var/usrlocal
+
 # checking if this script has already been executed once
 [ -f /root/.setuplock ] && exit
 
