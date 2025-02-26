@@ -13,7 +13,13 @@ ignore_files=("LICENSE" "README.md" ".git" "install.sh")
 # configure new users
 mkdir -p /etc/skel
 
-for file in *; do
+for file in * .[!.]*; do
+	# Skip if the file doesn't exist (can happen with the wildcards)
+    	[ -e "$file" ] || continue
+
+	# Skip . and .. directory entries
+    	[[ "$file" == "." || "$file" == ".." ]] && continue
+	
 	ignore=false
  	for ignored_file in "${ignore_files[@]}"; do
     		if [[ "$file" == "$ignored_file" ]]; then
